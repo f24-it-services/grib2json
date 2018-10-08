@@ -1,6 +1,6 @@
 {
   "name": "grib2json",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "grib2json wrapper for nodejs",
   "keywords": [],
   "homepage": "https://github.com/f24-it-services/grib2json#readme",
