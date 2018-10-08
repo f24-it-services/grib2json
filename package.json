@@ -20,7 +20,7 @@
   "scripts": {
     "dist": "babel index.js -o index.es5.js",
     "prepublishOnly": "npm run dist",
-    "test": "scripts/install.sh ; node ./test/index.test.js",
+    "test": "npm run dist && scripts/install.sh && node ./test/index.test.js",
     "watch": "babel index.js -o index.es5.js -w"
   },
   "babel": {
