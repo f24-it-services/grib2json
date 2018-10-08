@@ -2,23 +2,37 @@
   "name": "grib2json",
   "version": "1.0.0",
   "description": "grib2json wrapper for nodejs",
+  "keywords": [],
+  "homepage": "https://github.com/f24-it-services/grib2json#readme",
+  "bugs": {
+    "url": "https://github.com/f24-it-services/grib2json/issues"
+  },
+  "license": "MIT",
+  "author": "Johannes Klose <jklose@calitrix.com>",
   "main": "index.es5.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/f24-it-services/grib2json.git"
+  },
   "scripts": {
     "dist": "babel index.js -o index.es5.js",
+    "prepublishOnly": "npm run dist",
+    "test": "scripts/install.sh ; node ./test/index.test.js",
     "watch": "babel index.js -o index.es5.js -w"
   },
-  "author": "Johannes Klose <jklose@calitrix.com>",
-  "license": "MIT",
   "babel": {
     "presets": [
-      "es2015"
+      "env"
     ]
   },
   "dependencies": {
-    "whereis": "^0.4.0"
+    "which": "^1.3.1"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
-    "babel-preset-es2015": "^6.13.2"
+    "babel-preset-env": "^1.6.0"
   }
 }

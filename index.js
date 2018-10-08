@@ -1,7 +1,7 @@
 import cp from 'child_process'
-import whereis from 'whereis'
+import which from 'which'
 
-let __scriptPath = undefined
+let __scriptPath
 /**
  * Determine the path to the grib2json launcher. Will look for the key
  * 'scriptPath' in the options object first, then for an env variable called
@@ -21,7 +21,7 @@ function getScriptPath (options, cb) {
       __scriptPath = process.env.GRIB2JSON_PATH
       process.nextTick(() => cb(null, __scriptPath))
     } else {
-      whereis('grib2json', (err, res) => {
+      which('grib2json', (err, res) => {
         __scriptPath = res || null
 
         if (err) return cb(err)
@@ -65,8 +65,8 @@ export default function grib2json (file, options, cb) {
     let stdout = ''
     let stderr = ''
     let child = cp.spawn(path, args)
-    child.stdout.on('data', (data) => stdout += data)
-    child.stderr.on('data', (data) => stderr += data)
+    child.stdout.on('data', (data) => { stdout += data })
+    child.stderr.on('data', (data) => { stderr += data })
     child.on('close', (code) => {
       if (code !== 0) {
         return cb(new Error(stderr))
